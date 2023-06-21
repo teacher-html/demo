@@ -13,6 +13,14 @@
 
     $method = $_SERVER['REQUEST_METHOD'];
     echo "<tr><td colspan='2'>HTTP-Methode:</td><td>$method</td>";
+    if (!empty($_GET)) {
+        echo "<tr><td colspan='3'>URL-Parameter:</td>";
+        foreach ($_GET as $key => $value) {
+            if ($value)
+                showValue($key, $value);
+        }
+    }
+
     if ($method == 'POST' || $method == 'PUT') {
         echo "<tr><td colspan='3'>Eingabefelder:</td>";
         foreach ($_POST as $key => $value) {
